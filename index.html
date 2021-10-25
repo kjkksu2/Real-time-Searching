@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Real Time Searching</title>
+  </head>
+  <style>
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      width: 30%;
+      padding: 5px;
+    }
+
+    ul {
+      max-width: 800px;
+      line-height: 30px;
+    }
+
+    li {
+      list-style: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Searching</h1>
+      <input type="text" placeholder="Wirte a text..." />
+      <ul>
+        <li>
+          <p>
+            HTML - Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s.
+          </p>
+        </li>
+        <li>
+          <p>
+            CSS - Contrary to popular belief, Lorem Ipsum is not simply random
+            text. It has roots in a piece of classical Latin literature from 45
+            BC, making it over 2000 years old.
+          </p>
+        </li>
+        <li>
+          <p>
+            JAVASCRIPT - The standard chunk of Lorem Ipsum used since the 1500s
+            is reproduced below for those interested.
+          </p>
+        </li>
+        <li>
+          <p>
+            JQUERY - There are many variations of passages of Lorem Ipsum
+            available, but the majority have suffered alteration in some form,
+            by injected humour.
+          </p>
+        </li>
+        <li>
+          <p>
+            JAVA - All the Lorem Ipsum generators on the Internet tend to repeat
+            predefined chunks as necessary, making this the first true generator
+            on the Internet.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const texts = document.querySelectorAll("p");
+    const input = document.querySelector("input");
+
+    input.addEventListener("keyup", (event) => {
+      const {
+        target: { value },
+      } = event;
+
+      const regex = new RegExp(value, "i");
+
+      texts.forEach((text) => {
+        if (regex.test(text.innerText)) {
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      });
+    });
+  </script>
+</html>
